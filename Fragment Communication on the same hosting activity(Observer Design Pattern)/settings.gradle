@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name='Fragments Communication on the same Hosting Activity'
