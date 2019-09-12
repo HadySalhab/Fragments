@@ -19,6 +19,7 @@ public class Fragment2 extends Fragment {
     private Callbckfrom2 mCallback2;
     private String mText2;
 
+    //this is the observer interface
     public interface Callbckfrom2 { //every class that implements this interface will be a type Callbckfrom2
         public void sentFrom2(String text);
     }
