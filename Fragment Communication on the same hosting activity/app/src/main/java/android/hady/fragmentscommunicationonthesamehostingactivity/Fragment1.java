@@ -20,6 +20,7 @@ public class Fragment1 extends Fragment {
     private String mText1;
 
 
+    //this is the observer interface
     public interface Callbckfrom1 { //every class that implements this interface will be a type Callbckfrom1
         public void sentFrom1(String text);
     }
