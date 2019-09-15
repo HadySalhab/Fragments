@@ -41,14 +41,7 @@ public class Fragment1 extends Fragment implements Subject {
         return fragment1;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        //we register our activity to get notified when fragments get attached
-        //since MainActivity implements observer and it is a subclass of Context:
-        registerObserver((MainActivity)context);
 
-    }
     @Override
     public void registerObserver(Observer obj) {
         mObserver = obj;
@@ -76,11 +69,15 @@ public class Fragment1 extends Fragment implements Subject {
         //return if nothing has changed
         if(!mChangedFlag) {return;}
         //notify the observer when something has changed
-        mObserver.getNotified(this,mEditText1.getText().toString());
+        mObserver.update(Fragment1.this);
         mChangedFlag= false; //turning the flag off after notifiying observers
     }
 
     public TextView getTextView() {
         return mTextView1;
+    }
+
+    public EditText getEditText1() {
+        return mEditText1;
     }
 }

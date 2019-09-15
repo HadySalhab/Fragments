@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements Observer {
         setContentView(R.layout.activity_main);
         mFragment1 = new Fragment1();
         mFragment2 = new Fragment2();
+        mFragment2.registerObserver(this); //registering the observer
+        mFragment1.registerObserver(this); //registering the observer
         mManager = getFragmentManager();
         mManager.beginTransaction().add(R.id.container_1, (android.app.Fragment) mFragment1, null)
                 .add(R.id.container_2, (android.app.Fragment) mFragment2, null)
@@ -26,12 +28,12 @@ public class MainActivity extends AppCompatActivity implements Observer {
 
 
     @Override
-    public void getNotified(Subject sbj, String message) {
+    public void update(Subject sbj) {
         if (sbj == mFragment1) {
-            mFragment2.getTextView().setText(message);
+            mFragment2.getTextView().setText(mFragment1.getEditText1().getText());
         }
         else{
-            mFragment1.getTextView().setText(message);
+            mFragment1.getTextView().setText(mFragment2.getEditText2().getText());
         }
 
 
